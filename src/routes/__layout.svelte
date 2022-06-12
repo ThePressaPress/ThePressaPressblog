@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+  import 'highlight.js/styles/github-dark.css'
   import i from '$lib/info';
 </script>
 

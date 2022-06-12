@@ -11,18 +11,21 @@ export default {
         {
             title: 'Body', 
             name: 'body',
-            type: 'array', 
-            of: [{type: 'block'}]
+            type: 'markdown'
         },
         {
             title: "Date",
             name: 'creationdate',
             type: 'datetime',
-
+        },
+        {
+            title: "Handle",
+            name: 'handle',
+            type: 'string'
         }
     ],
     initialValue: {
-        creationdate: Date.now()
+        creationdate: new Date(Date.now()).toISOString()
     }
 
 }

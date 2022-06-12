@@ -1,14 +1,14 @@
 <script lang=ts>
 	import i from "$lib/info";
 	export let posts: Array<any>;
-	const latestpost = posts.slice().sort((a, b) => b.creationdate - a.creationdate)[0]
+	const latestpost = posts.slice().sort((a, b) => b.creationdate - a.creationdate).reverse()[0]
 </script>
 
 <div class="bg-white shadow h-full overflow-hidden sm:rounded-md">
 	<ul class="flex h-full flex-col">
 	  <li class="px-4 py-4 sm:px-6 text-center">
 		<h1 class="text-2xl">{i.blogname}</h1>
-		<h2 class="text-lg text-gray-400">By {i.author}</h2>
+		<h2 class="text-lg text-muted">By {i.author}</h2>
 	  </li>
 	  {#if posts.length}
 		<li class="px-4 py-4 sm:px-6 text-center flex-grow mx-10">
@@ -21,7 +21,7 @@
 							<span class="text-3xl text-left">
 								{latestpost.title}
 							</span>
-							<span class="text-xs text-left">
+							<span class="text-xs text-left text-muted">
 								Created {new Date(latestpost.creationdate).toDateString()}
 							</span>
 						</div>
@@ -35,7 +35,7 @@
 				</div>
 		</li>
 		<li class="px-4 py-4 sm:px-6 text-center flex-grow">
-			TODO: List of blog posts
+			TODO: List of blog posts (excluding the most recent post above)
 		  </li>
 	  {:else}
 		<li class="px-4 py-4 sm:px-6 text-center">

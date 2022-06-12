@@ -1,7 +1,16 @@
 <script lang=ts>
-    import SvelteMarkdown from 'svelte-markdown';
+    import SvelteMarkdown, { type Renderers } from 'svelte-markdown';
     import { markedSlugger } from '$lib/extras';
-    import { Writable, writable } from 'svelte/store';
+    import { writable } from 'svelte/store';
+    import type { Writable } from 'svelte/store';
+    import List from "$lib/renderers/List.svelte";
+    import Code from '$lib/renderers/Code.svelte';
+
+    const renderers = {
+        list: List,
+        code: Code
+    }
+
     export let post;
 
     type Heading = {
@@ -25,8 +34,6 @@
             }) 
         }
     }
-
-    toc.subscribe(console.log)
 </script>
 
 {#if post}
@@ -39,17 +46,18 @@
                     <ol>
                         {#each $toc as i}
                             <li>
-                                <a class="hover:from-slate-600 ml-5" href="#{i.id}">{i.text}</a>
+                                <a class="hover:text-slate-600 ml-5" href="#{i.id}">{i.text}</a>
                             </li>
                         {/each}
                     </ol>
                 </div>
             </div>
         </div>
-        <div class="flex flex-grow flex-col h-full w-full divide-y">
+        <div class="flex flex-grow flex-col h-full w-full">
             <h1 class="text-5xl text-center">{post.title}</h1>
-            <div class="marked min-w-full w-full h-full">
-                <SvelteMarkdown source={post.markdown} on:parsed={render}></SvelteMarkdown>
+            <h4 class="text-lg text-muted border-b text-center">Created {(new Date(post.creationdate)).toDateString()}</h4>
+            <div class="marked my-10 min-w-full w-full h-full pl-5">
+                <SvelteMarkdown source={post.body} {renderers} on:parsed={render}></SvelteMarkdown>
             </div>
         </div>
     </div>

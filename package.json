@@ -41,6 +41,7 @@
 		"@tailwindcss/forms": "^0.5.2",
 		"@tailwindcss/typography": "^0.5.2",
 		"@types/marked": "^4.0.3",
+		"highlight.js": "^11.5.1",
 		"marked": "^4.0.16",
 		"svelte-markdown": "^0.2.2"
 	}

@@ -1,8 +1,9 @@
-export async function get() {
+import client from "$lib/sanity"
 
+export async function get() {
     return {
         body: {
-            posts
+            posts: await client.fetch(`*[_type == "post"]`)
         }
     }
 }
