@@ -8,7 +8,7 @@
   <title>{i.blogname}</title>
 </svelte:head>
 
-<div class="flex-col flex h-screen">
+<div class="flex-col flex h-screen overflow-x-hidden no-scrollbar">
   <nav class="bg-gray-100 sticky">
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
       <div class="relative flex items-center justify-between h-16">

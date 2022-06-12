@@ -37,16 +37,16 @@
 </script>
 
 {#if post}
-<div class="h-full w-full flex">
+<div class="h-full w-full flex no-scrollbar">
     <div class="flex flex-grow h-full w-full divide-x flex-row">
-        <div class="flex flex-col divide-y h-full">
+        <div class="hidden sm:flex flex-col divide-y h-full">
             <span>Table of Contents</span>
             <div class="max-h-full">
-                <div class="overflow-y-scroll no-scrollbar max-h-max">
+                <div class="overflow-y-scroll overflow-x-hidden no-scrollbar max-h-max">
                     <ol>
                         {#each $toc as i}
                             <li>
-                                <a class="hover:text-slate-600 ml-5" href="#{i.id}">{i.text}</a>
+                                <a class="hover:text-slate-600 overflow-x-hiddens ml-5" href="#{i.id}">{i.text}</a>
                             </li>
                         {/each}
                     </ol>
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="flex flex-grow flex-col h-full w-full">
-            <h1 class="text-5xl text-center">{post.title}</h1>
+            <h1 class="text-2xl sm:text-4xl md:text-5xl text-center">{post.title}</h1>
             <h4 class="text-lg text-muted border-b text-center">Created {(new Date(post.creationdate)).toDateString()}</h4>
             <div class="marked my-10 min-w-full w-full h-full pl-5">
                 <SvelteMarkdown source={post.body} {renderers} on:parsed={render}></SvelteMarkdown>

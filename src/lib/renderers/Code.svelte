@@ -1,12 +1,11 @@
 <script lang=ts>
     export let lang
     export let text
-    export let raw
+    // export let raw;
     let codeElm: HTMLElement
 
     import hljs from 'highlight.js';
     const code = hljs.highlight(text, {language: lang || 'plaintext'})
-    console.log(code)
 
     let cssclass = lang? `language-${lang}`: 'language-plaintext'
 
